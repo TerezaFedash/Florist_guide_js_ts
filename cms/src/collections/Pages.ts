@@ -3,7 +3,7 @@ import { Hero } from '../blocks/Hero'
 import { Catalog } from '../blocks/Catalog'
 import { Features } from '../blocks/Features'
 import { Tips } from '../blocks/Tips'
-import { Contacts } from '../blocks/Contacts'
+import { Seasonal } from '../blocks/Seasonal'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -24,13 +24,13 @@ export const Pages: CollectionConfig = {
       type: 'text',
       label: 'Назва сторінки',
       required: true,
-      defaultValue: 'Довідник Флориста',
+      defaultValue: 'Florist Guide — Довідник Флориста',
     },
     {
       name: 'blocks',
       type: 'blocks',
       label: 'Блоки конструктора сторінки',
-      blocks: [Hero, Catalog, Features, Tips, Contacts],
+      blocks: [Hero, Catalog, Features, Tips, Seasonal],
     },
   ],
 }

@@ -1,0 +1,126 @@
+/* ================================================================
+   SEASONAL — сезонний календар флориста
+   ================================================================ */
+
+.seasonal {
+  padding-block: 70px 90px;
+}
+
+.seasonal__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 26px;
+  margin-top: 36px;
+}
+
+.season-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.2s;
+  position: relative;
+}
+
+.season-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: #f7cbd3;
+}
+
+.season-card__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-line-soft);
+}
+
+.season-card__emoji {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--color-accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.season-card__title {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.season-card__months {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.season-card__flowers {
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.season-card__label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-muted);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.season-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.season-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-line);
+  font-size: 0.8rem;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.season-card:hover .season-tag {
+  background: var(--color-accent-soft);
+  border-color: #f6d8df;
+}
+
+.season-card__tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  background: linear-gradient(135deg, #fff9fa 0%, #fff0f3 100%);
+  border-radius: var(--radius-sm);
+  border: 1px solid #fae4e9;
+}
+
+.season-card__tip-icon {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.season-card__tip-text {
+  font-size: 0.86rem;
+  color: var(--color-muted);
+  line-height: 1.5;
+  margin: 0;
+}

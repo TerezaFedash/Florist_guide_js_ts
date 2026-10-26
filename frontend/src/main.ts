@@ -23,7 +23,7 @@ function renderUIState(payload: UIStatePayload): void {
         <div class="ui-state-container">
           <div class="loading-box">
             <div class="loading-spinner"></div>
-            <h2 class="loading-title">Завантаження ФлораГід...</h2>
+            <h2 class="loading-title">Завантаження Florist Guide...</h2>
             <p class="loading-desc">${payload.message || 'Отримуємо дані з Payload CMS та хмарної БД Neon'}</p>
           </div>
         </div>
@@ -53,9 +53,7 @@ function renderUIState(payload: UIStatePayload): void {
         </div>
       `
 
-      // Додаємо обробники подій для кнопок стану помилки
       document.querySelector('#btn-retry')?.addEventListener('click', () => {
-        // Очищаємо прапорець симуляції помилки, якщо він був у URL
         const url = new URL(window.location.href)
         url.searchParams.delete('simulateError')
         window.history.replaceState({}, '', url.toString())
@@ -85,14 +83,14 @@ function renderUIState(payload: UIStatePayload): void {
 
         <!-- Панель для тестування станів у звіті з практики -->
         <aside class="demo-toolbar" aria-label="Панель студента для звіту">
-          <span>🌸 <strong>ФлораГід</strong> (${payload.data.source === 'api' ? 'Payload API' : 'Демо-режим'})</span>
+          <span>🌸 <strong>Florist Guide</strong> (${payload.data.source === 'api' ? 'Payload API' : 'Демо-режим'})</span>
           <button id="btn-simulate-error" title="Для скріншоту помилки у звіті">⚠️ Скрін помилки</button>
           <button id="btn-simulate-loading" title="Для скріншоту завантаження у звіті">⏳ Скрін завантаження</button>
         </aside>
       `
 
-      // Ініціалізація інтерактивних фільтрів каталогу квітів
-      initCatalogFilters()
+      // Ініціалізація вкладок категорій каталогу рослин
+      initCategoryTabs()
 
       // Ініціалізація кнопок тестової панелі (для легкого зняття скріншотів для розділу 2.4)
       document.querySelector('#btn-simulate-error')?.addEventListener('click', () => {
@@ -109,7 +107,7 @@ function renderUIState(payload: UIStatePayload): void {
         })
         setTimeout(() => {
           initApp()
-        }, 3500)
+        }, 3000)
       })
       break
     }
@@ -117,27 +115,33 @@ function renderUIState(payload: UIStatePayload): void {
 }
 
 /**
- * Клієнтська інтерактивність: фільтрація карток квітів за рівнем догляду
+ * Клієнтська інтерактивність: фільтрація рослин за категорією
+ * (Всі / Зрізані / Кімнатні / Сухоцвіти / Екзотичні)
  */
-function initCatalogFilters(): void {
-  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn')
-  const flowerCards = document.querySelectorAll<HTMLElement>('.flower-card')
+function initCategoryTabs(): void {
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn')
+  const cards = document.querySelectorAll<HTMLElement>('.flower-card')
 
-  if (!filterButtons.length || !flowerCards.length) return
+  if (!tabs.length || !cards.length) return
 
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach((b) => b.classList.remove('active'))
-      btn.classList.add('active')
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => {
+        t.classList.remove('active')
+        t.setAttribute('aria-selected', 'false')
+      })
 
-      const selectedFilter = btn.dataset.filter || 'all'
+      tab.classList.add('active')
+      tab.setAttribute('aria-selected', 'true')
 
-      flowerCards.forEach((card) => {
-        const careLevel = card.dataset.careLevel
+      const selectedCategory = tab.dataset.category || 'all'
 
-        if (selectedFilter === 'all' || careLevel === selectedFilter) {
+      cards.forEach((card) => {
+        const cardCategory = card.dataset.category
+
+        if (selectedCategory === 'all' || cardCategory === selectedCategory) {
           card.style.display = 'flex'
-          card.style.animation = 'fadeIn 0.3s ease forwards'
+          card.style.opacity = '1'
         } else {
           card.style.display = 'none'
         }
@@ -156,7 +160,6 @@ async function initApp(forceFallback: boolean = false): Promise<void> {
   })
 
   try {
-    // Якщо користувач форсує демо або оффлайн
     if (forceFallback) {
       const { fallbackSettings, fallbackPage } = await import('./data/mockData')
       renderUIState({
@@ -171,7 +174,6 @@ async function initApp(forceFallback: boolean = false): Promise<void> {
       return
     }
 
-    // Паралельні асинхронні запити за допомогою Promise.all
     const [settingsResult, pageResult] = await Promise.all([
       getSettings(),
       getPage(window.location.pathname || '/'),

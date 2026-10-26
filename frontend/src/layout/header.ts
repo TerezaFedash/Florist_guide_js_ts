@@ -1,10 +1,11 @@
 import type { CommonSettings } from '../types'
 
 /**
- * Рендер шапки сайту (Header) з логотипом у ніжно-рожевих тонах та навігацією
+ * Рендер шапки сайту (Header) у ніжно-рожевій палітрі
+ * Назва сайту: "Довідник Флориста" / "Florist Guide"
  */
 export function renderHeader(settings: CommonSettings): string {
-  const { siteName, tagline = 'Довідник Флориста', menu = [] } = settings
+  const { siteName = 'Florist Guide', tagline = 'Довідник Флориста', menu = [] } = settings
 
   return `
     <header class="header">

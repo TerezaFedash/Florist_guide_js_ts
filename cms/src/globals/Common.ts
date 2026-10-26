@@ -10,7 +10,7 @@ export const Common: GlobalConfig = {
       type: 'text',
       label: 'Назва сайту',
       required: true,
-      defaultValue: 'ФлораГід',
+      defaultValue: 'Florist Guide',
     },
     {
       name: 'tagline',
@@ -36,7 +36,7 @@ export const Common: GlobalConfig = {
           name: 'text',
           type: 'text',
           label: 'Текст у футері',
-          defaultValue: 'Практичний довідник флориста: надихаємо на красу та вчимо дбати про живі квіти щодня.',
+          defaultValue: 'Практичний довідник флориста: ніжні квіти, правильний догляд та натхнення щодня.',
         },
         {
           name: 'author',

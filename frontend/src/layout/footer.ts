@@ -1,11 +1,11 @@
 import type { CommonSettings } from '../types'
 
 /**
- * Рендер підвалу сайту (Footer) з копірайтом, роком та інформацією про авторів
+ * Рендер підвалу сайту (Footer) з копірайтом та авторством
  */
 export function renderFooter(settings: CommonSettings): string {
   const currentYear = new Date().getFullYear()
-  const { siteName, footer } = settings
+  const { siteName = 'Florist Guide', footer } = settings
 
   return `
     <footer class="footer">
@@ -16,9 +16,9 @@ export function renderFooter(settings: CommonSettings): string {
         </div>
 
         <div class="footer__credits">
-          <div>© ${currentYear} ${siteName}. Всі права захищено.</div>
+          <div>© ${currentYear} ${siteName} — Довідник Флориста. Всі права захищено.</div>
           <div style="margin-top: 6px;">
-            Розробка звіту з практики: <span class="footer__student-badge">${footer.author || 'Гусаров, Юрчишин'}</span>
+            Звіт з виробничої практики: <span class="footer__student-badge">${footer.author || 'Гусаров, Юрчишин'}</span>
           </div>
         </div>
       </div>

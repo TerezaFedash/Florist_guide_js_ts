@@ -2,7 +2,7 @@
  * =======================================================================
  * РОЗДІЛ 2.3. ТИПІЗАЦІЯ НА TYPESCRIPT ("ДОВІДНИК ФЛОРИСТА")
  * Демонстрація Type Aliases, Union Types, Intersection Types,
- * типізації функцій, об'єктів та даних, отриманих через API.
+ * типізації функцій і об'єктів, типізація даних, отриманих через API.
  * =======================================================================
  */
 
@@ -13,17 +13,20 @@
 /** Рівень складності догляду за квіткою */
 export type FlowerCareLevel = 'easy' | 'medium' | 'hard'
 
-/** Варіант стилю оформлення кнопки (рожева головна / контурна) */
+/** Категорія рослини в довіднику флориста */
+export type FlowerCategory = 'cut' | 'houseplant' | 'dried' | 'exotic'
+
+/** Варіант стилю оформлення кнопки */
 export type ButtonVariant = 'primary' | 'secondary' | 'outline'
 
 /** Типи доступних динамічних блоків лендінгу */
-export type BlockType = 'hero' | 'catalog' | 'features' | 'tips' | 'contacts'
+export type BlockType = 'hero' | 'catalog' | 'features' | 'tips' | 'seasonal'
 
 /** Стан завантаження інтерфейсу користувача */
 export type UIState = 'loading' | 'error' | 'success'
 
-/** Фільтр каталогу квітів за рівнем догляду */
-export type FlowerFilter = 'all' | FlowerCareLevel
+/** Фільтр каталогу квітів за категорією */
+export type FlowerFilter = 'all' | FlowerCategory
 
 /** Опис ресурсу зображення */
 export type ImageResource = {
@@ -48,7 +51,7 @@ export type BaseBlock = {
   title?: string
 }
 
-/** Розширений базовий блок із обов'язковим або опціональним підзаголовком */
+/** Розширений базовий блок із підзаголовком */
 export type BlockWithSubtitle = BaseBlock & {
   subtitle?: string
 }
@@ -66,6 +69,7 @@ export type FlowerCard = {
   name: string
   latinName?: string
   careLevel: FlowerCareLevel
+  category: FlowerCategory
   vaseLife: string
   season?: string
   description: string
@@ -84,6 +88,15 @@ export type TipCard = {
   tag: string
   title: string
   content: string
+}
+
+/** Місяць із рекомендованими квітами (для сезонного блоку) */
+export type SeasonMonth = {
+  season: string
+  emoji: string
+  months: string
+  flowers: string[]
+  tip: string
 }
 
 /** Блок "Hero" (головний банер) */
@@ -111,14 +124,10 @@ export type TipsBlock = BaseBlock & {
   cards: TipCard[]
 }
 
-/** Блок "Contacts" (контакти та оранжерея) */
-export type ContactsBlock = BaseBlock & {
-  type: 'contacts'
-  description?: string
-  phone: string
-  email: string
-  address: string
-  workingHours: string
+/** Блок "Seasonal" (сезонний квітковий календар) */
+export type SeasonalBlock = BlockWithSubtitle & {
+  type: 'seasonal'
+  seasons: SeasonMonth[]
 }
 
 /** Метадані сторінки, об'єднані з таймштампом завантаження (Intersection Type) */
@@ -132,15 +141,15 @@ export type FetchedMetadata = {
 // -----------------------------------------------------------------------
 
 /**
- * Дискриміноване об'єднання (Discriminated Union) усіх можливих блоків
- * Поле `type` слугує дискримінатором для безпечного звуження типу (type narrowing)
+ * Дискриміноване об'єднання (Discriminated Union) усіх можливих блоків.
+ * Поле `type` — дискримінатор для безпечного звуження типу (type narrowing).
  */
 export type PageBlock =
   | HeroBlock
   | CatalogBlock
   | FeaturesBlock
   | TipsBlock
-  | ContactsBlock
+  | SeasonalBlock
 
 /** Результат виконання API запиту */
 export type ApiResponse<T> =
@@ -179,7 +188,7 @@ export type PageResponse = {
 export type LandingPageData = {
   settings: CommonSettings
   page: PageResponse
-} & FetchedMetadata // Використання Intersection Type
+} & FetchedMetadata
 
 // -----------------------------------------------------------------------
 // 5. ТИПІЗАЦІЯ ФУНКЦІЙ ТА ШАБЛОНІЗАТОРІВ (Function Signatures)
@@ -194,5 +203,5 @@ export type BlockRenderersMap = {
   catalog: BlockRenderer<CatalogBlock>
   features: BlockRenderer<FeaturesBlock>
   tips: BlockRenderer<TipsBlock>
-  contacts: BlockRenderer<ContactsBlock>
+  seasonal: BlockRenderer<SeasonalBlock>
 }

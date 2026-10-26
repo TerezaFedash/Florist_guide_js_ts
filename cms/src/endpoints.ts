@@ -1,7 +1,7 @@
 import type { Endpoint, PayloadRequest } from 'payload'
 
 function blockCleaner(block: Record<string, any>) {
-  const { id, blockName, blockType, image, items, cards, buttons, ...rest } = block
+  const { id, blockName, blockType, image, items, cards, buttons, seasons, ...rest } = block
 
   const clean: Record<string, any> = {
     type: blockType,
@@ -18,7 +18,7 @@ function blockCleaner(block: Record<string, any>) {
     clean.image = { src: image, alt: 'Зображення' }
   }
 
-  // Handle items (e.g., in Catalog or Features)
+  // Handle items (Catalog or Features)
   if (Array.isArray(items)) {
     clean.items = items.map((item: any) => {
       const cleanItem = { ...item }
@@ -37,17 +37,27 @@ function blockCleaner(block: Record<string, any>) {
     })
   }
 
-  // Handle cards (e.g., in Tips)
+  // Handle cards (Tips)
   if (Array.isArray(cards)) {
     clean.cards = cards.map((c: any) => ({ ...c }))
   }
 
-  // Handle buttons (e.g., in Hero)
+  // Handle buttons (Hero)
   if (Array.isArray(buttons)) {
     clean.buttons = buttons.map(({ text, link, variant }: any) => ({
       text,
       link,
       variant: variant || 'primary',
+    }))
+  }
+
+  // Handle seasons (Seasonal)
+  if (Array.isArray(seasons)) {
+    clean.seasons = seasons.map((s: any) => ({
+      ...s,
+      flowers: Array.isArray(s.flowers)
+        ? s.flowers.map((f: any) => (typeof f === 'string' ? f : f.name || ''))
+        : [],
     }))
   }
 
@@ -65,11 +75,11 @@ export const commonEndpoint: Endpoint = {
       })
 
       return Response.json({
-        siteName: common.siteName || 'ФлораГід',
+        siteName: common.siteName || 'Florist Guide',
         tagline: common.tagline || 'Довідник Флориста',
         menu: (common.menu ?? []).map(({ label, link }: any) => ({ label, link })),
         footer: {
-          text: common.footer?.text ?? 'Практичний довідник флориста: надихаємо на красу та вчимо дбати про квіти.',
+          text: common.footer?.text ?? 'Практичний довідник флориста: ніжні квіти, правильний догляд та натхнення щодня.',
           author: common.footer?.author ?? 'Гусаров, Юрчишин',
         },
       })

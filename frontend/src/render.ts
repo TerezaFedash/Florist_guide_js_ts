@@ -3,7 +3,7 @@ import { hero } from './blocks/hero/hero'
 import { catalog } from './blocks/catalog/catalog'
 import { features } from './blocks/features/features'
 import { tips } from './blocks/tips/tips'
-import { contacts } from './blocks/contacts/contacts'
+import { seasonal } from './blocks/seasonal/seasonal'
 
 /**
  * Словник шаблонізаторів, суворо типізований через BlockRenderersMap
@@ -13,7 +13,7 @@ const renderers: BlockRenderersMap = {
   catalog,
   features,
   tips,
-  contacts,
+  seasonal,
 }
 
 /**
@@ -30,7 +30,7 @@ export function renderBlocks(blocks: PageBlock[]): string {
       const render = renderers[block.type] as ((b: PageBlock) => string) | undefined
 
       if (!render) {
-        console.warn(`[FloraGuide] Шаблон для блоку типу "${block.type}" не знайдено.`)
+        console.warn(`[Florist Guide] Шаблон для блоку типу "${block.type}" не знайдено.`)
         return ''
       }
 

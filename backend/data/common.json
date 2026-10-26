@@ -1,5 +1,5 @@
 {
-  "siteName": "ФлораГід",
+  "siteName": "Florist Guide",
   "tagline": "Довідник Флориста",
   "menu": [
     {
@@ -7,7 +7,7 @@
       "link": "#hero"
     },
     {
-      "label": "Каталог квітів",
+      "label": "Каталог рослин",
       "link": "#catalog"
     },
     {
@@ -15,12 +15,12 @@
       "link": "#care"
     },
     {
-      "label": "Секрети",
+      "label": "Поради",
       "link": "#tips"
     },
     {
-      "label": "Контакти",
-      "link": "#contacts"
+      "label": "Сезони",
+      "link": "#seasonal"
     }
   ],
   "footer": {

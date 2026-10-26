@@ -31,7 +31,7 @@ app.get(["/api/page", "/api/pages"], (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🌸 ФлораГід Mock API працює на http://localhost:${PORT}`);
+  console.log(`🌸 Florist Guide (Довідник Флориста) Mock API працює на http://localhost:${PORT}`);
   console.log(`- http://localhost:${PORT}/api/common`);
   console.log(`- http://localhost:${PORT}/api/page?path=/`);
 });

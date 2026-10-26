@@ -1,5 +1,5 @@
 {
-  "name": "flora-guide-monorepo",
+  "name": "florist-guide-monorepo",
   "version": "1.0.0",
   "description": "Fullstack-застосунок 'Довідник Флориста' на Payload CMS 3, Neon PostgreSQL, Vite та TypeScript",
   "private": true,
