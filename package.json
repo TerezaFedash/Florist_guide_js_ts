@@ -1,0 +1,17 @@
+{
+  "name": "flora-guide-monorepo",
+  "version": "1.0.0",
+  "description": "Fullstack-застосунок 'Довідник Флориста' на Payload CMS 3, Neon PostgreSQL, Vite та TypeScript",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:cms": "npm --prefix cms run dev",
+    "dev:backend": "npm --prefix backend run start",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:cms": "npm --prefix cms run build",
+    "typecheck:frontend": "npm --prefix frontend run typecheck"
+  },
+  "keywords": ["payload-cms", "typescript", "vite", "florist-guide", "neon", "postgresql", "monorepo"],
+  "author": "Гусаров, Юрчишин",
+  "license": "MIT"
+}
