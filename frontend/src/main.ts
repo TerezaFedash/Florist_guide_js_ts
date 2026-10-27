@@ -4,6 +4,7 @@ import { getSettings, getPage } from './api'
 import { renderBlocks } from './render'
 import { renderHeader } from './layout/header'
 import { renderFooter } from './layout/footer'
+import { renderWelcomeModal, initWelcomeModal } from './layout/welcomeModal'
 
 const app = document.querySelector<HTMLDivElement>('#app')
 
@@ -75,12 +76,16 @@ function renderUIState(payload: UIStatePayload): void {
       document.title = `${page.title} — ${settings.siteName}`
 
       app.innerHTML = `
+        ${renderWelcomeModal()}
         ${renderHeader(settings)}
         <main>
           ${renderBlocks(page.blocks)}
         </main>
         ${renderFooter(settings)}
       `
+
+      // Ініціалізація початкового екрана вибору режиму (Користувач / Адмін)
+      initWelcomeModal()
 
       // Ініціалізація вкладок категорій каталогу рослин
       initCategoryTabs()
