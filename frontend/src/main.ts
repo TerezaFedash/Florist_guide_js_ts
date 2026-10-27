@@ -122,15 +122,6 @@ function initCategoryTabs(): void {
 }
 
 async function initApp(forceFallback: boolean = false): Promise<void> {
-  const urlParams = new URLSearchParams(window.location.search)
-  if (urlParams.get('simulateLoading') === 'true') {
-    renderUIState({
-      state: 'loading',
-      message: 'Отримуємо конфігурацію блоків та налаштування сайту з Payload CMS...',
-    })
-    return
-  }
-
   renderUIState({
     state: 'loading',
     message: 'Отримуємо конфігурацію блоків та налаштування сайту...',

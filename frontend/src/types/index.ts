@@ -94,21 +94,11 @@ export type FetchedMetadata = {
   source: 'api' | 'fallback'
 }
 
-export type PageBlock =
-  | HeroBlock
-  | CatalogBlock
-  | FeaturesBlock
-  | TipsBlock
-  | SeasonalBlock
+export type PageBlock = | HeroBlock | CatalogBlock | FeaturesBlock | TipsBlock | SeasonalBlock
 
-export type ApiResponse<T> =
-  | { success: true; data: T }
-  | { success: false; error: string; statusCode?: number }
+export type ApiResponse<T> = | { success: true; data: T } | { success: false; error: string; statusCode?: number }
 
-export type UIStatePayload =
-  | { state: 'loading'; message?: string }
-  | { state: 'error'; message: string; errorDetails?: string; canRetry: boolean }
-  | { state: 'success'; data: LandingPageData }
+export type UIStatePayload = | { state: 'loading'; message?: string } | { state: 'error'; message: string; errorDetails?: string; canRetry: boolean }| { state: 'success'; data: LandingPageData }
 
 export type CommonSettings = {
   siteName: string
