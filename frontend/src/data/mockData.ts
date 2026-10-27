@@ -5,10 +5,10 @@ export const fallbackSettings: CommonSettings = {
   tagline: 'Довідник Флориста',
   menu: [
     { label: 'Головна', link: '#hero' },
-    { label: 'Каталог квітів', link: '#catalog' },
+    { label: 'Квіти', link: '#catalog' },
     { label: 'Догляд', link: '#care' },
     { label: 'Поради', link: '#tips' },
-    { label: 'Сезони', link: '#seasonal' },
+    { label: 'Сезон', link: '#seasonal' },
   ],
   footer: {
     text: 'Практичний довідник флориста — ніжні квіти, правильний догляд та натхнення щодня.',

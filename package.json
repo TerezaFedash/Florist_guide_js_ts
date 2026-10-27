@@ -4,6 +4,8 @@
   "description": "Fullstack-застосунок 'Довідник Флориста' на Payload CMS 3, Neon PostgreSQL, Vite та TypeScript",
   "private": true,
   "scripts": {
+    "dev": "concurrently -n \"CMS,FRONTEND\" -c \"magenta,cyan\" \"npm run dev:cms\" \"npm run dev:frontend\"",
+    "dev:mock": "concurrently -n \"API,FRONTEND\" -c \"yellow,cyan\" \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:frontend": "npm --prefix frontend run dev",
     "dev:cms": "npm --prefix cms run dev",
     "dev:backend": "npm --prefix backend run start",
@@ -11,7 +13,18 @@
     "build:cms": "npm --prefix cms run build",
     "typecheck:frontend": "npm --prefix frontend run typecheck"
   },
-  "keywords": ["payload-cms", "typescript", "vite", "florist-guide", "neon", "postgresql", "monorepo"],
+  "keywords": [
+    "payload-cms",
+    "typescript",
+    "vite",
+    "florist-guide",
+    "neon",
+    "postgresql",
+    "monorepo"
+  ],
   "author": "Гусаров, Юрчишин",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
 }

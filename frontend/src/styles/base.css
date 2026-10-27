@@ -227,13 +227,26 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 24px;
+}
+
+.header__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   gap: 20px;
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .header__link {
   color: var(--color-muted);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: color 0.2s ease;
   position: relative;
 }

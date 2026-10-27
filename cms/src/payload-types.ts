@@ -198,18 +198,83 @@ export interface Page {
           }
         | {
             anchor?: string | null;
+            badge?: string | null;
             title: string;
+            subtitle?: string | null;
+            items?:
+              | {
+                  name: string;
+                  latinName?: string | null;
+                  category?: ('cut' | 'houseplant' | 'dried' | 'exotic') | null;
+                  careLevel?: ('easy' | 'medium' | 'hard') | null;
+                  vaseLife: string;
+                  season?: string | null;
+                  description: string;
+                  image?: (number | null) | Media;
+                  imageUrl?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'catalog';
+          }
+        | {
+            anchor?: string | null;
+            badge?: string | null;
+            title: string;
+            subtitle?: string | null;
             items?:
               | {
                   icon: string;
                   title: string;
-                  text?: string | null;
+                  text: string;
                   id?: string | null;
                 }[]
               | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'features';
+          }
+        | {
+            anchor?: string | null;
+            badge?: string | null;
+            title: string;
+            cards?:
+              | {
+                  tag?: string | null;
+                  title: string;
+                  content: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tips';
+          }
+        | {
+            anchor?: string | null;
+            badge?: string | null;
+            title: string;
+            subtitle?: string | null;
+            seasons?:
+              | {
+                  season: string;
+                  emoji: string;
+                  months: string;
+                  flowers?:
+                    | {
+                        name: string;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  tip: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'seasonal';
           }
       )[]
     | null;
@@ -364,17 +429,85 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        catalog?:
+          | T
+          | {
+              anchor?: T;
+              badge?: T;
+              title?: T;
+              subtitle?: T;
+              items?:
+                | T
+                | {
+                    name?: T;
+                    latinName?: T;
+                    category?: T;
+                    careLevel?: T;
+                    vaseLife?: T;
+                    season?: T;
+                    description?: T;
+                    image?: T;
+                    imageUrl?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
         features?:
           | T
           | {
               anchor?: T;
+              badge?: T;
               title?: T;
+              subtitle?: T;
               items?:
                 | T
                 | {
                     icon?: T;
                     title?: T;
                     text?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tips?:
+          | T
+          | {
+              anchor?: T;
+              badge?: T;
+              title?: T;
+              cards?:
+                | T
+                | {
+                    tag?: T;
+                    title?: T;
+                    content?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        seasonal?:
+          | T
+          | {
+              anchor?: T;
+              badge?: T;
+              title?: T;
+              subtitle?: T;
+              seasons?:
+                | T
+                | {
+                    season?: T;
+                    emoji?: T;
+                    months?: T;
+                    flowers?:
+                      | T
+                      | {
+                          name?: T;
+                          id?: T;
+                        };
+                    tip?: T;
                     id?: T;
                   };
               id?: T;
@@ -431,6 +564,7 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface Common {
   id: number;
   siteName: string;
+  tagline?: string | null;
   menu?:
     | {
         label: string;
@@ -440,6 +574,7 @@ export interface Common {
     | null;
   footer?: {
     text?: string | null;
+    author?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -450,6 +585,7 @@ export interface Common {
  */
 export interface CommonSelect<T extends boolean = true> {
   siteName?: T;
+  tagline?: T;
   menu?:
     | T
     | {
@@ -461,6 +597,7 @@ export interface CommonSelect<T extends boolean = true> {
     | T
     | {
         text?: T;
+        author?: T;
       };
   updatedAt?: T;
   createdAt?: T;
