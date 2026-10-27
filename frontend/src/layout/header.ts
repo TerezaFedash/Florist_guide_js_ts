@@ -10,7 +10,7 @@ export function renderHeader(settings: CommonSettings): string {
   const cmsAdminUrl =
     (import.meta.env.VITE_CMS_URL as string | undefined) ||
     (import.meta.env.VITE_API_URL as string | undefined) ||
-    'http://localhost:3000'
+    'https://florist-guide-js-ts-cms.vercel.app'
 
   // Стандартний список розділів для клієнта
   const defaultMenu = [

@@ -6,7 +6,7 @@ export function renderWelcomeModal(): string {
   const cmsAdminUrl =
     (import.meta.env.VITE_CMS_URL as string | undefined) ||
     (import.meta.env.VITE_API_URL as string | undefined) ||
-    'http://localhost:3000'
+    'https://florist-guide-js-ts-cms.vercel.app'
 
   return `
     <div id="welcome-modal" class="welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
