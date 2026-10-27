@@ -80,35 +80,10 @@ function renderUIState(payload: UIStatePayload): void {
           ${renderBlocks(page.blocks)}
         </main>
         ${renderFooter(settings)}
-
-        <!-- Панель для тестування станів у звіті з практики -->
-        <aside class="demo-toolbar" aria-label="Панель студента для звіту">
-          <span>🌸 <strong>Florist Guide</strong> (${payload.data.source === 'api' ? 'Payload API' : 'Демо-режим'})</span>
-          <button id="btn-simulate-error" title="Для скріншоту помилки у звіті">⚠️ Скрін помилки</button>
-          <button id="btn-simulate-loading" title="Для скріншоту завантаження у звіті">⏳ Скрін завантаження</button>
-        </aside>
       `
 
       // Ініціалізація вкладок категорій каталогу рослин
       initCategoryTabs()
-
-      // Ініціалізація кнопок тестової панелі (для легкого зняття скріншотів для розділу 2.4)
-      document.querySelector('#btn-simulate-error')?.addEventListener('click', () => {
-        const url = new URL(window.location.href)
-        url.searchParams.set('simulateError', 'true')
-        window.history.replaceState({}, '', url.toString())
-        initApp()
-      })
-
-      document.querySelector('#btn-simulate-loading')?.addEventListener('click', () => {
-        renderUIState({
-          state: 'loading',
-          message: 'Демонстрація стану очікування відповіді від API / Neon DB',
-        })
-        setTimeout(() => {
-          initApp()
-        }, 3000)
-      })
       break
     }
   }

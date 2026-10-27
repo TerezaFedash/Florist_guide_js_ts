@@ -16,7 +16,7 @@ export function hero(block: HeroBlock): string {
 
   const imageSrc =
     image?.src ||
-    'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?w=900&auto=format&fit=crop&q=80'
+    'https://plus.unsplash.com/premium_photo-1676475964992-6404b8db0b53?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D'
   const imageAlt = image?.alt || title
 
   return `
