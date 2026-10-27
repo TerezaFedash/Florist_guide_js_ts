@@ -1,10 +1,6 @@
 import './seasonal.css'
 import type { SeasonalBlock } from '../../types'
 
-/**
- * Рендер блоку сезонного календаря рослин (Seasonal)
- * Замінює стару форму контактів пізнавальним флористичним гідом по порах року
- */
 export function seasonal(block: SeasonalBlock): string {
   const {
     anchor = 'seasonal',

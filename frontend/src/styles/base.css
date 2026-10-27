@@ -1,22 +1,19 @@
-/* ==========================================================================
-   ДОВІДНИК ФЛОРИСТА — БАЗОВІ СТИЛІ ТА РОЖЕВА ПАЛІТРА
-   ========================================================================== */
 
 :root {
-  /* Палітра в ніжно-рожевих відтінках */
+
   --color-bg: #fff8f9;
   --color-surface: #ffffff;
   --color-surface-soft: #fdf2f4;
   --color-line: #f6d8df;
   --color-line-soft: #faebef;
-  
+
   --color-text: #3d232c;
   --color-muted: #82636d;
   --color-accent: #e06d88;
   --color-accent-hover: #c54f6b;
   --color-accent-soft: #fde8ed;
   --color-accent-badge: #fbe0e6;
-  
+
   --color-success-bg: #eaf5ee;
   --color-success-text: #2f6b43;
   --color-warning-bg: #fdf5e7;
@@ -27,7 +24,7 @@
   --shadow-sm: 0 2px 8px rgba(224, 109, 136, 0.06);
   --shadow-md: 0 10px 25px -4px rgba(224, 109, 136, 0.1), 0 4px 10px -2px rgba(0, 0, 0, 0.03);
   --shadow-hover: 0 16px 32px -4px rgba(224, 109, 136, 0.18);
-  
+
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -79,10 +76,6 @@ a {
   text-decoration: none;
 }
 
-/* ==========================================================================
-   ТИПОГРАФІКА ТА БЕЙДЖІ
-   ========================================================================== */
-
 .section-badge {
   display: inline-flex;
   align-items: center;
@@ -117,10 +110,6 @@ a {
   font-size: 1.05rem;
   line-height: 1.6;
 }
-
-/* ==========================================================================
-   КНОПКИ ТА ЕЛЕМЕНТИ ДІЙ
-   ========================================================================== */
 
 .btn {
   display: inline-flex;
@@ -170,10 +159,6 @@ a {
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
-
-/* ==========================================================================
-   ХЕДЕР
-   ========================================================================== */
 
 .header {
   display: flex;
@@ -255,10 +240,6 @@ a {
   color: var(--color-accent);
 }
 
-/* ==========================================================================
-   ФУТЕР
-   ========================================================================== */
-
 .footer {
   margin-top: 80px;
   padding-block: 40px 32px;
@@ -302,10 +283,6 @@ a {
   font-weight: 600;
 }
 
-/* ==========================================================================
-   СТАНИ UI: ЗАВАНТАЖЕННЯ ТА ПОМИЛКА
-   ========================================================================== */
-
 .ui-state-container {
   display: flex;
   flex-direction: column;
@@ -316,7 +293,6 @@ a {
   padding: 40px 20px;
 }
 
-/* Стан завантаження (Loading) */
 .loading-box {
   background: var(--color-surface);
   border: 1px solid var(--color-line);
@@ -354,7 +330,6 @@ a {
   color: var(--color-muted);
 }
 
-/* Стан помилки (Error) */
 .error-box {
   background: var(--color-surface);
   border: 1px solid #f9ccd3;
@@ -394,10 +369,6 @@ a {
   gap: 12px;
   justify-content: center;
 }
-
-/* ==========================================================================
-   ПОЧАТКОВИЙ ЕКРАН ВИБОРУ РЕЖИМУ (КОРИСТУВАЧ / АДМІН)
-   ========================================================================== */
 
 .welcome-overlay {
   position: fixed;
@@ -526,7 +497,6 @@ a {
   opacity: 0.85;
 }
 
-/* Стиль кнопки користувача (головна рожева) */
 .welcome-choice-btn--primary {
   background: linear-gradient(135deg, #fff2f5 0%, #fde4ea 100%);
   border-color: #f7cbd4;
@@ -545,7 +515,6 @@ a {
   box-shadow: 0 8px 22px rgba(224, 109, 136, 0.28);
 }
 
-/* Стиль кнопки адміністратора (CMS) */
 .welcome-choice-btn--secondary {
   background: #ffffff;
   border-color: var(--color-line);
@@ -564,7 +533,6 @@ a {
   box-shadow: var(--shadow-hover);
 }
 
-/* Додаткові компактні класи для хедера */
 .btn--sm {
   padding: 8px 18px;
   font-size: 0.85rem;

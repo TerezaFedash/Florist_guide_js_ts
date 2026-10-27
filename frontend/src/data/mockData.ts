@@ -44,7 +44,7 @@ export const fallbackPage: PageResponse = {
       subtitle:
         'Зрізані квіти для букетів, кімнатні рослини для дому, витончені сухоцвіти та екзотичні дивовижі — повний довідник флориста.',
       items: [
-        // === ЗРІЗАНІ КВІТИ ===
+
         {
           id: 'cut-1',
           name: 'Троянда',
@@ -136,7 +136,6 @@ export const fallbackPage: PageResponse = {
           },
         },
 
-        // === КІМНАТНІ РОСЛИНИ ===
         {
           id: 'home-1',
           name: 'Орхідея Фаленопсис',
@@ -228,7 +227,6 @@ export const fallbackPage: PageResponse = {
           },
         },
 
-        // === СУХОЦВІТИ ===
         {
           id: 'dry-1',
           name: 'Лаванда',
@@ -320,7 +318,6 @@ export const fallbackPage: PageResponse = {
           },
         },
 
-        // === ЕКЗОТИЧНІ КВІТИ ===
         {
           id: 'exotic-1',
           name: 'Стреліція',

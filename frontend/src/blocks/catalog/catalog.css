@@ -1,12 +1,8 @@
-/* ================================================================
-   CATALOG — каталог квітів із вкладками категорій
-   ================================================================ */
 
 .catalog {
   padding-block: 70px 90px;
 }
 
-/* --- Вкладки (Tabs) --- */
 .catalog__tabs {
   display: flex;
   flex-wrap: wrap;
@@ -42,7 +38,6 @@
   box-shadow: 0 3px 10px rgba(224, 109, 136, 0.32);
 }
 
-/* --- Сітка карток --- */
 .catalog__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -50,7 +45,6 @@
   margin-top: 40px;
 }
 
-/* --- Картка квітки --- */
 .flower-card {
   background: var(--color-surface);
   border: 1px solid var(--color-line);
@@ -87,7 +81,6 @@
   transform: scale(1.06);
 }
 
-/* --- Бейдж рівня догляду --- */
 .care-badge {
   position: absolute;
   top: 10px;
@@ -118,7 +111,6 @@
   border: 1px solid #f7b8c4;
 }
 
-/* --- Вміст картки --- */
 .flower-card__body {
   padding: 20px 22px 24px;
   display: flex;
@@ -166,7 +158,6 @@
   flex-grow: 1;
 }
 
-/* --- Порожній стан при фільтрації --- */
 .catalog__empty {
   grid-column: 1 / -1;
   text-align: center;
@@ -179,7 +170,6 @@
   margin-bottom: 12px;
 }
 
-/* --- Responsive --- */
 @media (max-width: 640px) {
   .catalog__grid {
     grid-template-columns: 1fr;

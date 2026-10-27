@@ -8,7 +8,6 @@ function blockCleaner(block: Record<string, any>) {
     ...rest,
   }
 
-  // Handle block image
   if (image && typeof image === 'object') {
     clean.image = {
       src: image.url || '',
@@ -18,7 +17,6 @@ function blockCleaner(block: Record<string, any>) {
     clean.image = { src: image, alt: 'Зображення' }
   }
 
-  // Handle items (Catalog or Features)
   if (Array.isArray(items)) {
     clean.items = items.map((item: any) => {
       const cleanItem = { ...item }
@@ -37,12 +35,10 @@ function blockCleaner(block: Record<string, any>) {
     })
   }
 
-  // Handle cards (Tips)
   if (Array.isArray(cards)) {
     clean.cards = cards.map((c: any) => ({ ...c }))
   }
 
-  // Handle buttons (Hero)
   if (Array.isArray(buttons)) {
     clean.buttons = buttons.map(({ text, link, variant }: any) => ({
       text,
@@ -51,7 +47,6 @@ function blockCleaner(block: Record<string, any>) {
     }))
   }
 
-  // Handle seasons (Seasonal)
   if (Array.isArray(seasons)) {
     clean.seasons = seasons.map((s: any) => ({
       ...s,

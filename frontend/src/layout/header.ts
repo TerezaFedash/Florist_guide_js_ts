@@ -1,10 +1,5 @@
 import type { CommonSettings } from '../types'
 
-/**
- * Рендер шапки сайту (Header) у ніжно-рожевій палітрі
- * Навігація містить чіткі розділи: Головна, Квіти, Догляд, Поради, Сезон
- * та кнопки перемикання режиму і переходу в адмінку CMS
- */
 export function renderHeader(settings: CommonSettings): string {
   const { siteName = 'Florist Guide', tagline = 'Довідник Флориста', menu = [] } = settings
   const cmsAdminUrl =
@@ -12,7 +7,6 @@ export function renderHeader(settings: CommonSettings): string {
     (import.meta.env.VITE_API_URL as string | undefined) ||
     'https://florist-guide-js-ts-cms.vercel.app'
 
-  // Стандартний список розділів для клієнта
   const defaultMenu = [
     { label: 'Головна', link: '#hero' },
     { label: 'Квіти', link: '#catalog' },

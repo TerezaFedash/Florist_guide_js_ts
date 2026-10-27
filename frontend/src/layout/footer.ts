@@ -1,6 +1,5 @@
 import type { CommonSettings } from '../types'
 
-
 export function renderFooter(settings: CommonSettings): string {
   const currentYear = new Date().getFullYear()
   const { siteName = 'Florist Guide', footer } = settings

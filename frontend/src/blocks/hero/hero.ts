@@ -1,9 +1,6 @@
 import './hero.css'
 import type { HeroBlock } from '../../types'
 
-/**
- * Рендер блоку Hero (головний екран лендінгу)
- */
 export function hero(block: HeroBlock): string {
   const {
     anchor = 'hero',
@@ -25,7 +22,7 @@ export function hero(block: HeroBlock): string {
         ${badge ? `<div class="section-badge">${badge}</div>` : ''}
         <h1 class="hero__title">${title}</h1>
         ${subtitle ? `<p class="hero__subtitle">${subtitle}</p>` : ''}
-        
+
         ${
           buttons.length > 0
             ? `

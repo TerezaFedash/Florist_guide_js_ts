@@ -7,18 +7,16 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*", // Дозволяє звернення з Vite dev server
+    origin: "*",
   })
 );
 
 const PORT = process.env.PORT || 3000;
 
-// Ендпоінт загальних налаштувань сайту (сумісний з Payload /api/common)
 app.get(["/api/common", "/api/settings"], (req, res) => {
   res.json(commonData);
 });
 
-// Ендпоінт сторінки з блоками за path (сумісний з Payload /api/page?path=...)
 app.get(["/api/page", "/api/pages"], (req, res) => {
   const queryPath = req.query.path || "/";
   const page = pagesData.find((p) => p.path === queryPath);

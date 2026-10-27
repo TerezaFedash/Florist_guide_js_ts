@@ -1,7 +1,4 @@
-/**
- * Початковий екран вибору режиму доступу (Florist Guide)
- * Дозволяє користувачеві вибрати: переглянути сайт як відвідувач або перейти в адмінку Payload CMS
- */
+
 export function renderWelcomeModal(): string {
   const cmsAdminUrl =
     (import.meta.env.VITE_CMS_URL as string | undefined) ||
@@ -14,7 +11,7 @@ export function renderWelcomeModal(): string {
         <div class="welcome-card__badge">🌸 Вебзастосунок</div>
         <h1 id="welcome-title" class="welcome-card__title">Florist Guide</h1>
         <p class="welcome-card__tagline">Довідник Флориста</p>
-        
+
         <p class="welcome-card__desc">
           Оберіть, у якому режимі ви бажаєте переглянути систему:
         </p>
@@ -43,9 +40,6 @@ export function renderWelcomeModal(): string {
   `
 }
 
-/**
- * Ініціалізація взаємодії з модальним вікном вибору режиму
- */
 export function initWelcomeModal(): void {
   const modal = document.querySelector<HTMLDivElement>('#welcome-modal')
   const enterUserBtn = document.querySelector<HTMLButtonElement>('#btn-enter-user')

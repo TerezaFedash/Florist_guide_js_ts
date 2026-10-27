@@ -1,7 +1,6 @@
 import './catalog.css'
 import type { CatalogBlock, FlowerCareLevel, FlowerCategory } from '../../types'
 
-/** Мітки рівня складності догляду з класами для стилізації */
 function getCareBadge(level: FlowerCareLevel): { label: string; className: string } {
   switch (level) {
     case 'easy':   return { label: '🌱 Легкий', className: 'badge--easy' }
@@ -11,7 +10,6 @@ function getCareBadge(level: FlowerCareLevel): { label: string; className: strin
   }
 }
 
-/** Конфігурація вкладок категорій */
 const CATEGORY_TABS: { value: string; label: string }[] = [
   { value: 'all',        label: '✦ Всі' },
   { value: 'cut',        label: '💐 Зрізані' },
@@ -20,9 +18,6 @@ const CATEGORY_TABS: { value: string; label: string }[] = [
   { value: 'exotic',     label: '🌺 Екзотичні' },
 ]
 
-/**
- * Рендер каталогу квітів із картками та фільтрами за категорією
- */
 export function catalog(block: CatalogBlock): string {
   const {
     anchor = 'catalog',

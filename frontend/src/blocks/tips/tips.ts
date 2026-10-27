@@ -1,9 +1,6 @@
 import './tips.css'
 import type { TipsBlock } from '../../types'
 
-/**
- * Рендер блоку професійних секретів та порад від флористів (Tips)
- */
 export function tips(block: TipsBlock): string {
   const {
     anchor = 'tips',

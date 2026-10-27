@@ -1,9 +1,6 @@
 import './features.css'
 import type { FeaturesBlock } from '../../types'
 
-/**
- * Рендер блоку правил та особливостей догляду (Features)
- */
 export function features(block: FeaturesBlock): string {
   const {
     anchor = 'care',

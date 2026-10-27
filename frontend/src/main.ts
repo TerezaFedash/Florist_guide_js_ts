@@ -12,9 +12,6 @@ if (!app) {
   throw new Error('Кореневий DOM-елемент #app не знайдено.')
 }
 
-/**
- * Відображення різних станів користувацького інтерфейсу (Loading / Error / Success)
- */
 function renderUIState(payload: UIStatePayload): void {
   if (!app) return
 
@@ -84,20 +81,14 @@ function renderUIState(payload: UIStatePayload): void {
         ${renderFooter(settings)}
       `
 
-      // Ініціалізація початкового екрана вибору режиму (Користувач / Адмін)
       initWelcomeModal()
 
-      // Ініціалізація вкладок категорій каталогу рослин
       initCategoryTabs()
       break
     }
   }
 }
 
-/**
- * Клієнтська інтерактивність: фільтрація рослин за категорією
- * (Всі / Зрізані / Кімнатні / Сухоцвіти / Екзотичні)
- */
 function initCategoryTabs(): void {
   const tabs = document.querySelectorAll<HTMLButtonElement>('.tab-btn')
   const cards = document.querySelectorAll<HTMLElement>('.flower-card')
@@ -130,9 +121,6 @@ function initCategoryTabs(): void {
   })
 }
 
-/**
- * Основна функція ініціалізації та асинхронного завантаження даних
- */
 async function initApp(forceFallback: boolean = false): Promise<void> {
   renderUIState({
     state: 'loading',
@@ -181,5 +169,4 @@ async function initApp(forceFallback: boolean = false): Promise<void> {
   }
 }
 
-// Запуск застосунку
 initApp()

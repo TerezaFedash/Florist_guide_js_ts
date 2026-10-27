@@ -4,10 +4,6 @@ import { fallbackSettings, fallbackPage } from './data/mockData'
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || import.meta.env.API_URL || 'http://localhost:3000'
 
-/**
- * Універсальна типізована функція виконання GET-запитів до API
- * Використовує Generics <T> для суворої типізації відповіді
- */
 async function getJson<T>(endpoint: string): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`
 
@@ -27,12 +23,7 @@ async function getJson<T>(endpoint: string): Promise<T> {
   return data
 }
 
-/**
- * Отримання загальних налаштувань сайту (/api/common або /api/settings)
- * З безпечним фолбеком на випадок відсутності зв'язку з CMS під час демонстрації
- */
 export async function getSettings(): Promise<{ data: CommonSettings; source: 'api' | 'fallback' }> {
-  // Перевірка на штучну симуляцію помилки для скріншотів звіту
   const urlParams = new URLSearchParams(window.location.search)
   if (urlParams.get('simulateError') === 'common') {
     throw new Error('Симуляція помилки: не вдалося завантажити налаштування сайту з CMS.')
@@ -47,13 +38,9 @@ export async function getSettings(): Promise<{ data: CommonSettings; source: 'ap
   }
 }
 
-/**
- * Отримання сторінки з блоками за її URL-шляхом (/api/page?path=... або /api/pages)
- */
 export async function getPage(
   path: string,
 ): Promise<{ data: PageResponse; source: 'api' | 'fallback' }> {
-  // Перевірка на симуляцію помилки для скріншотів звіту
   const urlParams = new URLSearchParams(window.location.search)
   if (urlParams.get('simulateError') === 'true' || urlParams.get('simulateError') === 'page') {
     throw new Error('Помилка зʼєднання з Neon PostgreSQL: перевищено час очікування відповіді.')

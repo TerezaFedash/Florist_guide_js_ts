@@ -5,9 +5,6 @@ import { features } from './blocks/features/features'
 import { tips } from './blocks/tips/tips'
 import { seasonal } from './blocks/seasonal/seasonal'
 
-/**
- * Словник шаблонізаторів, суворо типізований через BlockRenderersMap
- */
 const renderers: BlockRenderersMap = {
   hero,
   catalog,
@@ -16,10 +13,6 @@ const renderers: BlockRenderersMap = {
   seasonal,
 }
 
-/**
- * Динамічний рендер масиву блоків відповідно до їх властивості 'type'
- * Звужує типи та викликає відповідний шаблон
- */
 export function renderBlocks(blocks: PageBlock[]): string {
   if (!blocks || !Array.isArray(blocks)) {
     return ''
